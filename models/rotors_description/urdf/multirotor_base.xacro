@@ -62,6 +62,16 @@
         <linkName>base_link</linkName>
         <rotorVelocitySlowdownSim>${rotor_velocity_slowdown_sim}</rotorVelocitySlowdownSim>
       </plugin>
+            
+      <plugin name="ground_truth_pose" filename="libgazebo_ros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <bodyName>base_link</bodyName>
+        <topicName>base_link_ground_truth/state</topicName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>map</frameName>
+      </plugin>
+
     </gazebo>
     <gazebo reference="base_link">
       <material>Gazebo/${color}</material>
