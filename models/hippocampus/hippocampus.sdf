@@ -13,15 +13,17 @@
         <!--
           These values are a compromise between the dry mass and added mass
           values used to correct for hydrodynamic effects.
+          Real values:  m = 1,47 kg; Ixx = 0,002408 kgm²; Iyy = Izz = 0.010717 kgm²
+                        Xu = -1,11 kg; Yv = Zw = -2,8 kg; Kp = -0,00451 kgm²; Mq = Nr = -0,0163 kgm²
         -->
-        <mass>2</mass>
+        <mass>3</mass>
         <inertia>
-          <ixx>0.2</ixx>
+          <ixx>0.007</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.4</iyy>
+          <iyy>0.027</iyy>
           <iyz>0</iyz>
-          <izz>0.4</izz>
+          <izz>0.027</izz>
         </inertia>
       </inertial>
       <!--
@@ -734,22 +736,28 @@
     <!--
         The gazebo_uvv_plugin is called. Parameters such as the namespace or addedMass are transferred.
     -->
-    <plugin name='uuv_plugin' filename='librotors_gazebo_uuv_plugin.so'>
+    <plugin name='uuv_plugin' filename='libgazebo_uuv_plugin.so'>
       <robotNamespace>hippocampus</robotNamespace>
       <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
       <linkName>base_link</linkName>
-      <motorForceConstant>2</motorForceConstant>
-      <motorTorqueConstant>0.5</motorTorqueConstant>
+      <motorForceConstant>3</motorForceConstant>
+      <motorTorqueConstant>0.02</motorTorqueConstant>
 
       <!-- Parameters for the simulation -->
 
-      <!-- Added Mass Matrix as two vectors in order to define the diagonal -->
-      <addedMassLinear>1.94 6.05 6.05</addedMassLinear>
-      <addedMassAngular>2 4 4</addedMassAngular>
+      <!--
+        Added Mass Matrix as two vectors in order to define the diagonal
+        Real Values: Xu = -1,11 kg; Yv = Zw = -2,8 kg; Kp = -0,00451 kgm²; Mq = Nr = -0,0163 kgm²
+      -->
+      <addedMassLinear>1.11 2.8 2.8</addedMassLinear>
+      <addedMassAngular>0.00451 0.0163 0.0163</addedMassAngular>
 
-      <!--Damping Matrix as two vectors in order to define the diagonal -->
-      <dampingLinear>2.3 5.81 5.81</dampingLinear>
-      <dampingAngular>2 3 3</dampingAngular>
+      <!--
+        Damping Matrix as two vectors in order to define the diagonal
+        Real Values:
+      -->
+      <dampingLinear>5.39 17.36 17.36</dampingLinear>
+      <dampingAngular>0.00114 0.007 0.007</dampingAngular>
 
     </plugin>
 
@@ -772,6 +780,7 @@
 
     <!--
         The gazebo_motor_model.cpp is called.
+        Forces and Moments are set to zero since they are already calculated using the gazebo_uuv_plugin.
         The motor model plugins can be removed if you don't need the rotors to spin.
     -->
     <plugin name='front_right_motor_model' filename='librotors_gazebo_motor_model.so'>
@@ -782,12 +791,12 @@
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
       <maxRotVelocity>838</maxRotVelocity>
-      <motorConstant>8.54858e-06</motorConstant>
-      <momentConstant>0.016</momentConstant>
+      <motorConstant>0.0</motorConstant>
+      <momentConstant>0.0</momentConstant>
       <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
       <motorNumber>0</motorNumber>
-      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
-      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorDragCoefficient>0.0</rotorDragCoefficient>
+      <rollingMomentCoefficient>0.0</rollingMomentCoefficient>
       <motorSpeedPubTopic>motor_speed/0</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>0.05</rotorVelocitySlowdownSim>
     </plugin>
@@ -799,12 +808,12 @@
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
       <maxRotVelocity>838</maxRotVelocity>
-      <motorConstant>8.54858e-06</motorConstant>
-      <momentConstant>0.016</momentConstant>
+      <motorConstant>0.0</motorConstant>
+      <momentConstant>0.0</momentConstant>
       <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
       <motorNumber>1</motorNumber>
-      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
-      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorDragCoefficient>0.0</rotorDragCoefficient>
+      <rollingMomentCoefficient>0.0</rollingMomentCoefficient>
       <motorSpeedPubTopic>motor_speed/1</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>0.05</rotorVelocitySlowdownSim>
     </plugin>
@@ -816,12 +825,12 @@
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
       <maxRotVelocity>838</maxRotVelocity>
-      <motorConstant>8.54858e-06</motorConstant>
-      <momentConstant>0.016</momentConstant>
+      <motorConstant>0.0</motorConstant>
+      <momentConstant>0.0</momentConstant>
       <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
       <motorNumber>2</motorNumber>
-      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
-      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorDragCoefficient>0.0</rotorDragCoefficient>
+      <rollingMomentCoefficient>0.0</rollingMomentCoefficient>
       <motorSpeedPubTopic>motor_speed/2</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>0.05</rotorVelocitySlowdownSim>
     </plugin>
@@ -833,12 +842,12 @@
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
       <maxRotVelocity>838</maxRotVelocity>
-      <motorConstant>8.54858e-06</motorConstant>
-      <momentConstant>0.016</momentConstant>
+      <motorConstant>0.0</motorConstant>
+      <momentConstant>0.0</momentConstant>
       <commandSubTopic>/gazebo/command/motor_speed</commandSubTopic>
       <motorNumber>3</motorNumber>
-      <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
-      <rollingMomentCoefficient>1e-06</rollingMomentCoefficient>
+      <rotorDragCoefficient>0.0</rotorDragCoefficient>
+      <rollingMomentCoefficient>0.0</rollingMomentCoefficient>
       <motorSpeedPubTopic>motor_speed/3</motorSpeedPubTopic>
       <rotorVelocitySlowdownSim>0.05</rotorVelocitySlowdownSim>
     </plugin>
