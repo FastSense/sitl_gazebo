@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<robot name="iris" xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+  <!-- Instantiate iris "mechanics" -->
+  <xacro:include filename="$(arg rotors_description_dir)/urdf/iris_base.xacro" />
+
+
+  <!-- Mount a VI-sensor in front of the Firefly. -->
+  <xacro:vi_sensor_macro
+    namespace="${namespace}/vi_sensor"
+    parent_link="base_link"
+    enable_cameras="true"
+    enable_depth="true"
+    enable_ground_truth="true">
+<!--     <mass value="0.00" />
+    <inertia ixx="0.00000" ixy="0.0" ixz="0.0" iyy="0.00000" iyz="0.0" izz="0.00000" /> -->
+    <origin xyz="0.1 0.0 -0.03" rpy="0.0 0.1 0.0" />
+  </xacro:vi_sensor_macro>
+
+
+
+
+
+
+</robot>
+

@@ -11,7 +11,7 @@
   <xacro:arg name='enable_mavlink_interface' default='true' />
   <xacro:arg name='enable_wind' default='false' />
   <!-- The following causes segfault with multiple vehicles if defaults to true!!! -->
-  <xacro:arg name='enable_ground_truth' default='false' />
+  <xacro:arg name='enable_ground_truth' default='true' />
   <xacro:arg name='enable_logging' default='false' />
   <xacro:arg name='log_file' default='iris' />
 
@@ -53,7 +53,7 @@
     imu_topic="/imu"
     mass_imu_sensor="0.015"
     gyroscope_noise_density="0.0003394"
-    gyroscopoe_random_walk="0.000038785"
+    gyroscope_random_walk="0.000038785"
     gyroscope_bias_correlation_time="1000.0"
     gyroscope_turn_on_bias_sigma="0.0087"
     accelerometer_noise_density="0.004"
@@ -74,7 +74,7 @@
       imu_topic="ground_truth/imu"
       mass_imu_sensor="0.00001"
       gyroscope_noise_density="0.0"
-      gyroscopoe_random_walk="0.0"
+      gyroscope_random_walk="0.0"
       gyroscope_bias_correlation_time="1000.0"
       gyroscope_turn_on_bias_sigma="0.0"
       accelerometer_noise_density="0.0"
@@ -113,7 +113,7 @@
       odometry_map=""
       image_scale=""
     >
-      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> <!-- [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> 
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
     </xacro:odometry_plugin_macro>
   </xacro:if>
@@ -127,6 +127,36 @@
     >
     </xacro:bag_plugin_macro>
   </xacro:if>
+
+<!--     <xacro:urock_odometry_plugin_macro
+    namespace="${namespace}"
+    odometry_sensor_suffix="1"
+    parent_link="base_link"
+    pose_topic="odometry_sensor1/pose"
+    pose_with_covariance_topic="odometry_sensor1/pose_with_covariance"
+    position_topic="odometry_sensor1/position"
+    transform_topic="odometry_sensor1/transform"
+    odometry_topic="odometry_sensor1/odometry"
+    parent_frame_id="world"
+    child_frame_id="odometry_sensor1"
+    mass_odometry_sensor="0.00001"
+    measurement_divisor="1"
+    measurement_delay="0"
+    unknown_delay="0.0"
+    noise_normal_position="0 0 0"
+    noise_normal_quaternion="0 0 0"
+    noise_normal_linear_velocity="0 0 0"
+    noise_normal_angular_velocity="0 0 0"
+    noise_uniform_position="0 0 0"
+    noise_uniform_quaternion="0 0 0"
+    noise_uniform_linear_velocity="0 0 0"
+    noise_uniform_angular_velocity="0 0 0"
+    enable_odometry_map="false"
+    odometry_map=""
+    image_scale="">
+    <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> 
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </xacro:urock_odometry_plugin_macro> -->
 
 </robot>
 
