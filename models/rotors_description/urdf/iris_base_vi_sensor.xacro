@@ -14,14 +14,22 @@
     enable_cameras="true"
     enable_depth="true"
     enable_ground_truth="true">
-<!--     <mass value="0.00" />
-    <inertia ixx="0.00000" ixy="0.0" ixz="0.0" iyy="0.00000" iyz="0.0" izz="0.00000" /> -->
     <origin xyz="0.1 0.0 -0.03" rpy="0.0 0.1 0.0" />
   </xacro:vi_sensor_macro>
 
 
+  <xacro:opt_flow_macro
+    namespace="${namespace}/opt_flow_cam"
+    parent_link="base_link">
+    <origin xyz="-0.12 0.05 0.0" rpy="0.0 ${pi/2} ${pi/2}" />
+  </xacro:opt_flow_macro>
 
 
+  <xacro:lidar_macro
+    namespace="${namespace}/lidar"
+    parent_link="base_link">
+    <origin xyz="-0.12 0.0 0.0" rpy="0.0 ${pi} 0.0" />
+  </xacro:lidar_macro>
 
 
 </robot>
