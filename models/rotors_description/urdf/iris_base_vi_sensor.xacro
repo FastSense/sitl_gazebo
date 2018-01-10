@@ -7,7 +7,6 @@
   <xacro:include filename="$(arg rotors_description_dir)/urdf/iris_base.xacro" />
 
 
-  <!-- Mount a VI-sensor in front of the Firefly. -->
   <xacro:vi_sensor_macro
     namespace="${namespace}/vi_sensor"
     parent_link="base_link"
@@ -19,16 +18,16 @@
 
 
   <xacro:opt_flow_macro
-    namespace="${namespace}/opt_flow_cam"
+    namespace="${namespace}"
     parent_link="base_link">
     <origin xyz="-0.12 0.05 0.0" rpy="0.0 ${pi/2} ${pi/2}" />
   </xacro:opt_flow_macro>
 
 
   <xacro:lidar_macro
-    namespace="${namespace}/lidar"
     parent_link="base_link">
-    <origin xyz="-0.12 0.0 0.0" rpy="0.0 ${pi} 0.0" />
+    <!-- <origin xyz="-0.12 0.0 0.0" rpy="0.0 ${pi} 0.0" /> -->
+    <origin xyz="-0.12 0.0 0.0" rpy="0.0 0.0 0.0" />
   </xacro:lidar_macro>
 
 

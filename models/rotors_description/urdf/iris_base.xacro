@@ -65,8 +65,9 @@
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:imu_plugin_macro>
 
+<!-- Mount an IMU providing ground truth. -->
+ <!-- Mount a generic odometry sensor providing ground truth. -->
   <xacro:if value="$(arg enable_ground_truth)">
-    <!-- Mount an IMU providing ground truth. -->
     <xacro:imu_plugin_macro
       namespace="${namespace}"
       imu_suffix="gt"
@@ -86,36 +87,6 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:imu_plugin_macro>
 
-    <!-- Mount a generic odometry sensor providing ground truth. -->
-    <xacro:odometry_plugin_macro
-      namespace="${namespace}/ground_truth"
-      odometry_sensor_suffix="gt"
-      parent_link="base_link"
-      pose_topic="pose"
-      pose_with_covariance_topic="pose_with_covariance"
-      position_topic="position"
-      transform_topic="transform"
-      odometry_topic="odometry"
-      parent_frame_id="world"
-      mass_odometry_sensor="0.00001"
-      measurement_divisor="1"
-      measurement_delay="0"
-      unknown_delay="0.0"
-      noise_normal_position="0 0 0"
-      noise_normal_quaternion="0 0 0"
-      noise_normal_linear_velocity="0 0 0"
-      noise_normal_angular_velocity="0 0 0"
-      noise_uniform_position="0 0 0"
-      noise_uniform_quaternion="0 0 0"
-      noise_uniform_linear_velocity="0 0 0"
-      noise_uniform_angular_velocity="0 0 0"
-      enable_odometry_map="false"
-      odometry_map=""
-      image_scale=""
-    >
-      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> 
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-    </xacro:odometry_plugin_macro>
   </xacro:if>
 
   <xacro:if value="$(arg enable_logging)">
@@ -128,35 +99,6 @@
     </xacro:bag_plugin_macro>
   </xacro:if>
 
-<!--     <xacro:urock_odometry_plugin_macro
-    namespace="${namespace}"
-    odometry_sensor_suffix="1"
-    parent_link="base_link"
-    pose_topic="odometry_sensor1/pose"
-    pose_with_covariance_topic="odometry_sensor1/pose_with_covariance"
-    position_topic="odometry_sensor1/position"
-    transform_topic="odometry_sensor1/transform"
-    odometry_topic="odometry_sensor1/odometry"
-    parent_frame_id="world"
-    child_frame_id="odometry_sensor1"
-    mass_odometry_sensor="0.00001"
-    measurement_divisor="1"
-    measurement_delay="0"
-    unknown_delay="0.0"
-    noise_normal_position="0 0 0"
-    noise_normal_quaternion="0 0 0"
-    noise_normal_linear_velocity="0 0 0"
-    noise_normal_angular_velocity="0 0 0"
-    noise_uniform_position="0 0 0"
-    noise_uniform_quaternion="0 0 0"
-    noise_uniform_linear_velocity="0 0 0"
-    noise_uniform_angular_velocity="0 0 0"
-    enable_odometry_map="false"
-    odometry_map=""
-    image_scale="">
-    <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> 
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-  </xacro:urock_odometry_plugin_macro> -->
 
 </robot>
 

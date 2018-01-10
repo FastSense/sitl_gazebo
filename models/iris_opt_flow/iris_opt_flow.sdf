@@ -2,7 +2,7 @@
   <model name='iris_opt_flow'>
 
     <include>
-      <uri>model://iris</uri>
+      <uri>model://iris_fs</uri>
     </include>
 
     <include>
