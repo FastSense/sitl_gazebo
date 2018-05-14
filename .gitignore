@@ -4,6 +4,8 @@ scripts/schemas
 .DS_Store
 *~
 models/iris/*.sdf
+models/iris_vi_sensor/*.sdf
+
 *.pyc
 .*.sw?
 *-gen.sdf
