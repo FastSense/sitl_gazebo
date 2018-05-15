@@ -577,7 +577,7 @@
 
 
   <!-- VI-Sensor Macro -->
-  <xacro:macro name="vi_sensor_macro" params="namespace parent_link enable_cameras enable_depth enable_ground_truth *origin">
+  <xacro:macro name="vi_sensor_macro" params="namespace parent_link enable_cameras frame_rate enable_depth enable_ground_truth *origin">
     <!-- Vi Sensor Link -->
     <link name="${namespace}/vi_sensor_link">
       <collision>
@@ -611,7 +611,7 @@
       <!-- Insert stereo pair. -->
       <xacro:vi_sensor_stereo_camera_macro
         namespace="${namespace}" parent_link="${namespace}/vi_sensor_link"
-        frame_rate="30.0" origin_offset_x="0.015" baseline_y="${0.055*2}"
+        frame_rate="${frame_rate}" origin_offset_x="0.015" baseline_y="${0.055*2}"
         origin_offset_z="0.0065" max_range="30.0">
       </xacro:vi_sensor_stereo_camera_macro>
     </xacro:if>
