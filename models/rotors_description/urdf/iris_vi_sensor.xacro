@@ -11,10 +11,11 @@
     namespace="${namespace}/vi_sensor"
     parent_link="base_link"
     enable_cameras="true"
-    frame_rate="15"
-    enable_depth="false"
+    frame_rate="20"
+    enable_depth="true"
     enable_ground_truth="true">
-    <origin xyz="0.1 0.0 -0.03" rpy="0.0 0.1 0.0" />
+    <!-- <origin xyz="0.1 0.0 -0.03" rpy="0.0 0.1 0.0" /> -->
+    <origin xyz="0.1 0.0 -0.03" rpy="0.0 0.0 0.0" />
   </xacro:vi_sensor_macro>
 
 </robot>
